@@ -35,7 +35,7 @@ const MenuToggle = ({ setOpen, open, toggleMenu, navSize }) => {
           width: "100%",
           height: "100%",
           position: "absolute",
-          backgroundColor: "#96C0B7"
+          backgroundColor: "#2FE6DE"
         }}
         initial={{ left: "-100%" }}
         animate={{ left: hovering ? 0 : "-100%" }}
@@ -64,7 +64,7 @@ const Navitem = ({ label }) => {
         height: "35px",
         fontSize: "25px",
         cursor: "pointer",
-        backgroundColor: "#FF6666",
+        backgroundColor: "#f87e7e",
         borderRadius: "25px",
         marginBottom: "15px",
         position: "relative",
@@ -79,7 +79,7 @@ const Navitem = ({ label }) => {
           width: "100%",
           height: "100%",
           position: "absolute",
-          backgroundColor: "#96C0B7"
+          backgroundColor: "#2FE6DE"
         }}
         animate={{ left: hovering ? 0 : "-100%" }}
       ></motion.div>
@@ -92,7 +92,8 @@ const Navitem = ({ label }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          position: "absolute"
+          position: "absolute",
+          fontFamily:'quicksand'
         }}
       >
         {label}
@@ -150,7 +151,7 @@ const FullMenu = () => {
   return (
     <motion.div
       style={{
-        backgroundColor: "#FF6666",
+        backgroundColor: "#f87e7e",
         position: "relative",
         width: navSize,
         height: navSize,
@@ -189,11 +190,15 @@ const Navbar = () => {
         alignItems: "center"
       }}
     >
+      <div style={{
+        width:'10%'
+      }} >
+
+      </div>
       <Box
         sx={{
           color: "white",
           fontSize: "25px",
-          marginLeft: "20px"
         }}
       >
         Chris Munoz

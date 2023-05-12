@@ -1,0 +1,22 @@
+{
+    "fractal":{
+        "title":"Fractal",
+        "path":"showcases/Fractal"
+    },
+    "gol":{
+        "title":"Game of Life",
+        "path":"showcases/GOL"
+    },
+    "neumorphism":{
+        "title":"Neurmorphism",
+        "path":"showcases/MorphFinal"
+    },
+    "splineRocket":{
+        "title":"Rocket Model",
+        "path":"showcases/RocketSpline"
+    },
+    "splinePlanet":{
+        "title":"Planet",
+        "path":"showcases/PlanetSpline"
+    }
+}
