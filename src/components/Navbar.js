@@ -199,6 +199,7 @@ const Navbar = () => {
         sx={{
           color: "white",
           fontSize: "25px",
+          fontFamily:'quicksand'
         }}
       >
         Chris Munoz
