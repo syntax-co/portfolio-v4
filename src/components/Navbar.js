@@ -7,17 +7,10 @@ const MenuToggle = ({ setOpen, open, toggleMenu, navSize }) => {
   const [hovering, setHovering] = useState(false);
 
   return (
-    <motion.div
+    <motion.div id='toggle-body'
       style={{
         width: navSize,
         height: navSize,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer",
-        position: "absolute",
-        right: 0,
-        top: 0
       }}
       onMouseEnter={() => {
         setHovering(true);
@@ -30,13 +23,7 @@ const MenuToggle = ({ setOpen, open, toggleMenu, navSize }) => {
         toggleMenu();
       }}
     >
-      <motion.div
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          backgroundColor: "#2FE6DE"
-        }}
+      <motion.div id='toggle-rollover'
         initial={{ left: "-100%" }}
         animate={{ left: hovering ? 0 : "-100%" }}
       ></motion.div>
@@ -58,44 +45,16 @@ const Navitem = ({ label }) => {
   };
 
   return (
-    <motion.div
-      style={{
-        width: "150px",
-        height: "35px",
-        fontSize: "25px",
-        cursor: "pointer",
-        backgroundColor: "#f87e7e",
-        borderRadius: "25px",
-        marginBottom: "15px",
-        position: "relative",
-        overflow: "hidden"
-      }}
+    <motion.div id='navitem-body'
       variants={itemVariant}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
-      <motion.div
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          backgroundColor: "#2FE6DE"
-        }}
+      <motion.div id='navitem-rollover'
         animate={{ left: hovering ? 0 : "-100%" }}
       ></motion.div>
 
-      <Box
-        sx={{
-          width: "100%",
-          height: "100%",
-          color: "white",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "absolute",
-          fontFamily:'quicksand'
-        }}
-      >
+      <Box id='navitem-label'>
         {label}
       </Box>
     </motion.div>
@@ -182,37 +141,21 @@ const FullMenu = () => {
 
 const Navbar = () => {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "100px",
-        display: "flex",
-        alignItems: "center"
-      }}
-    >
+    <Box id='navbar-body' >
       <div style={{
-        width:'10%'
-      }} >
-
-      </div>
-      <Box
-        sx={{
-          color: "white",
-          fontSize: "25px",
-        }}
-      >
+        width:'15%'
+      }} ></div>
+      <Box id='logo-container'>
         Chris Munoz
       </Box>
 
-      <Box
-        sx={{
-          position: "absolute",
-          right: 24,
-          height: "70px",
-          width: "70px"
-        }}
-      >
+      <Box id='navbutton-holder' >
         <FullMenu />
+        {/* <div style={{
+          width:'15%',
+          height:'100%',
+          backgroundColor:'orange'
+        }} ></div> */}
       </Box>
     </Box>
   );

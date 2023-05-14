@@ -1,0 +1,71 @@
+
+#navbar-body {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center; 
+}
+
+#logo-container {
+    color:white;
+    font-size:25px;
+    font-family: 'quicksand';
+}
+
+#navbutton-holder {
+    position: absolute;
+    right: 15%;
+    height:70px;
+    width:70px;
+    display: flex;
+}
+
+
+#navitem-body {
+    width:150px;
+    height:35px;
+    font-size: 25px;
+    cursor:pointer;
+    background-color: #f87e7e;
+    border-radius: 25px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+#navitem-rollover {
+    width:100%;
+    height:100%;
+    position: absolute;
+    background-color: #2FE6DE;
+}
+
+#navitem-label {
+    width: 100%;
+    height:100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-family: 'quicksand';
+}
+
+
+
+
+#toggle-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+
+}
+
+#toggle-rollover {
+    width:100%;
+    height: 100%;
+    position: absolute;
+    background-color: #2FE6DE;
+}

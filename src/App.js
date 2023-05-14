@@ -1,70 +1,98 @@
 import "./css_files/styles.css";
 import { Box } from "@mui/material";
-import Navbar from "./components/Navbar";
+import projectData from './json_files/projects_data.json';
+import showcaseData from './json_files/showcase_data.json';
+import { useEffect,useState } from "react";
+import { ArrowOutward } from "@mui/icons-material";
+import {motion} from 'framer-motion';
 
-const Tile = () => {
+const Tile = ({label,image}) => {
+  const [hovering,setHovering] = useState(false)
 
   return(
-    <Box sx={{
-      width:'350px',
-      height:'250px',
+    <motion.div style={{
+      minWidth:'500px',
+      height:'275px',
       backgroundColor:'#202020',
-      marginLeft:'20px',
-      marginRight:'20px'
-    }}>
+      marginLeft:'auto',
+      marginRight:'auto',
+      marginTop:'10px',
+      marginBottom:'10px',
+      background:image? `url(${image})`:'',
+      backgroundSize:'cover',
+      backgroundRepeat:'no-repeat',
+      position:'relative'
+    }}
+    whileHover={{scale:.95}}
+    onMouseEnter={() => setHovering(true)}
+    onMouseLeave={() => setHovering(false)}
+    >
+      <Box id='tileTitle-container' >
+        <Box sx={{marginLeft:'5%'}}>
+          {label}
+        </Box>
+      </Box>
 
-    </Box>
+      <motion.div style={{
+        position:'absolute',
+        width:'50px',
+        height:'50px',
+        bottom:0,
+        right:0,
+        cursor:'pointer'
+      }}
+      initial={{opacity:0}}
+      animate={{opacity:hovering? 1:0}}
+      whileHover={{scale:.9}}
+      onClick={() => {}}
+      >
+        <ArrowOutward sx={{
+          color:'white',
+          width:'50px',
+          height:'50px'
+
+        }} />
+      </motion.div>
+
+    </motion.div>
   )
 }
 
 
 const ProjectSection = () => {
 
+  useEffect(() => {
+    console.log(projectData);
+  },[])
+
   return(
-    <Box sx={{
-      width:'80%',
-      height:'900px',
-      marginTop:'10%',
-    }}>
-      <Box sx={{
-        width:'100%',
-        color:'white',
-        fontSize:'45px',
-        fontFamily:'quicksand'
-      }}>
+    <Box id='project-container' >
+      <Box id='projectTitle-container' >
         Projects
       </Box>
 
       {/* line */}
       
-      <Box sx={{
-        width:'100%',
-        height:'5px',
-        backgroundColor:'white',
-        marginY:'20px'
-      }}></Box>
+      <Box id='section-line'></Box>
       
 
 
-      <Box sx={{
-        width:'100%',
-        height:'80%',
-        background:'linear-gradient(-120deg ,#f87e7e, #2FE6DE)',
-        display:'flex',
-        alignItems:'center',
-        justifyContent:'center'
-      }}>
+      <Box id='projectTile-container' >
 
-        <Box sx={{
-          width:'90%',
-          height:'90%',
-          display:'flex',
-          flexWrap:'wrap'
-        }}>
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
+        <Box id='projTile-inner'>
+          {
+            Object.keys(projectData).map(key => {
+              const info = projectData[key]
+              return(
+                <Tile key={key} 
+                label={info.title} 
+                image={info.imagepath}
+                />
+              )
+            })
+          }
+
+          <Box id='bottom-spacer' ></Box>
         </Box>
 
       </Box>
@@ -76,50 +104,26 @@ const ProjectSection = () => {
 const ShowcaseSection = () => {
 
   return(
-    <Box sx={{
-      width:'80%',
-      height:'900px',
-      marginTop:'10%',
-    }}>
-      <Box sx={{
-        width:'100%',
-        color:'white',
-        fontSize:'45px',
-        fontFamily:'quicksand'
-      }}>
+    <Box id='showcase-container' >
+      <Box id='showcaseTitle-container' >
         Showcase
       </Box>
 
       {/* line */}
       
-      <Box sx={{
-        width:'100%',
-        height:'5px',
-        backgroundColor:'white',
-        marginY:'20px'
-      }}></Box>
+      <Box id='section-line'></Box>
       
 
 
-      <Box sx={{
-        width:'100%',
-        height:'80%',
-        background:'linear-gradient(-120deg ,#f87e7e, #2FE6DE)',
-        display:'flex',
-        alignItems:'center',
-        justifyContent:'center'
-      }}>
+      <Box id='showcaseTile-container' >
 
-        <Box sx={{
-          width:'90%',
-          height:'90%',
-          display:'flex',
-          flexWrap:'wrap'
-        }}>
+        <Box id='showTile-inner'>
           <Tile />
           <Tile />
           <Tile />
           <Tile />
+
+          <Box id='bottom-spacer' ></Box>
         </Box>
 
       </Box>
@@ -131,15 +135,7 @@ const ShowcaseSection = () => {
 
 export default function App() {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "200vh",
-        display:'flex',
-        alignItems:'center',
-        flexDirection:'column'
-      }}
-    >
+    <Box id='homepage-container'>
       
       <ProjectSection />
       <ShowcaseSection />

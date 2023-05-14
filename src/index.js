@@ -6,6 +6,10 @@ import Navbar from "./components/Navbar";
 
 import App from "./App";
 
+import './css_files/styles.css';
+
+
+
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
