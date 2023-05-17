@@ -1,0 +1,122 @@
+
+
+#contact-body {
+    
+    width:100%;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+
+}
+
+
+#section-one {
+
+    width:80%;
+    height:90%;
+    color: white;
+
+}
+
+#section-one-title {
+    font-family: 'quicksand';
+    font-size: 50px;
+
+}
+
+#line {
+    width:100%;
+    height:5px;
+    background-color: white;
+    margin-top:15px;
+    margin-bottom:15px;
+
+
+}
+
+
+
+#border-box {
+
+    width:48%;
+    height:90%; 
+    background:linear-gradient(-120deg ,#f87e7e, #2FE6DE);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right:auto;
+}
+
+#border-box-inner {
+
+    width:99%;
+    height:99%;
+    background-color: #202020;
+
+}
+
+
+
+#steps-main {
+
+    height:90%;
+    width:48%;
+    margin-left:auto;
+}
+
+#tile-body {
+    font-family: 'quicksand';
+    width:100%;
+    height:20%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 5%;
+}
+
+
+#tile-diamond {
+    width: 120px;
+    height: 120px;
+    background:linear-gradient(-120deg ,#f87e7e 60%, #2FE6DE);
+    rotate: 45deg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+
+#diamond-inner {
+    width:115px;
+    height:115px;
+    background-color: #202020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#diamond-text-holder {
+    
+    width:80%;
+    height:80%;
+    rotate:-45deg;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    font-size: 18px;
+    /* transform: translateY(-10px); */
+
+}
+
+#step-text {
+    width:75%;
+    height:60%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}

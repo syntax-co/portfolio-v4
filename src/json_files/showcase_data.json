@@ -1,22 +1,27 @@
 {
     "fractal":{
         "title":"Fractal",
-        "path":"showcases/Fractal"
+        "sitepath":"showcases/Fractal",
+        "imagepath":"./images/fractal.png"
     },
     "gol":{
         "title":"Game of Life",
-        "path":"showcases/GOL"
+        "sitepath":"showcases/GOL",
+        "imagepath":"./images/gameoflife.png"
     },
     "neumorphism":{
         "title":"Neurmorphism",
-        "path":"showcases/MorphFinal"
+        "sitepath":"showcases/MorphFinal",
+        "imagepath":"./images/neumorphismtool.png"
     },
     "splineRocket":{
         "title":"Rocket Model",
-        "path":"showcases/RocketSpline"
+        "sitepath":"showcases/RocketSpline",
+        "imagepath":"./images/splinerocket.png"
     },
     "splinePlanet":{
         "title":"Planet",
-        "path":"showcases/PlanetSpline"
+        "sitepath":"showcases/PlanetSpline",
+        "imagepath":"./images/splineplanet.png"
     }
 }

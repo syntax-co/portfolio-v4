@@ -18,9 +18,10 @@ const Tile = ({label,image}) => {
       marginRight:'auto',
       marginTop:'10px',
       marginBottom:'10px',
-      background:image? `url(${image})`:'',
+      background:image? `url(${image})`:'#202020',
       backgroundSize:'cover',
       backgroundRepeat:'no-repeat',
+      backgroundPosition:'center',
       position:'relative'
     }}
     whileHover={{scale:.95}}
@@ -61,9 +62,7 @@ const Tile = ({label,image}) => {
 
 const ProjectSection = () => {
 
-  useEffect(() => {
-    console.log(projectData);
-  },[])
+  
 
   return(
     <Box id='project-container' >
@@ -118,10 +117,17 @@ const ShowcaseSection = () => {
       <Box id='showcaseTile-container' >
 
         <Box id='showTile-inner'>
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
+          {
+            Object.keys(showcaseData).map(key => {
+              const info = showcaseData[key]
+              return(
+                <Tile key={key}
+                label={info.title}
+                image={info.imagepath}
+                />
+              )
+            })
+          }
 
           <Box id='bottom-spacer' ></Box>
         </Box>

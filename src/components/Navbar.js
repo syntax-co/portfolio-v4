@@ -2,6 +2,8 @@ import { Box } from "@mui/material";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Squash as Hamburger } from "hamburger-react";
+import {Link} from 'react-router-dom';
+
 
 const MenuToggle = ({ setOpen, open, toggleMenu, navSize }) => {
   const [hovering, setHovering] = useState(false);
@@ -32,7 +34,7 @@ const MenuToggle = ({ setOpen, open, toggleMenu, navSize }) => {
   );
 };
 
-const Navitem = ({ label }) => {
+const Navitem = ({ label,path }) => {
   const [hovering, setHovering] = useState(false);
 
   const itemVariant = {
@@ -45,6 +47,7 @@ const Navitem = ({ label }) => {
   };
 
   return (
+    <Link to={path? path:'#'} >
     <motion.div id='navitem-body'
       variants={itemVariant}
       onMouseEnter={() => setHovering(true)}
@@ -58,6 +61,7 @@ const Navitem = ({ label }) => {
         {label}
       </Box>
     </motion.div>
+    </Link>
   );
 };
 
@@ -84,15 +88,15 @@ const Menu = () => {
       initial="hidden"
       animate="showing"
     >
-      <Navitem label="Home" />
-      <Navitem label="About" />
-      <Navitem label="Contact" />
+      <Navitem label="Home" path='/' />
+      <Navitem label="About" path='/about' />
+      <Navitem label="Contact" path='/contact' />
     </motion.div>
   );
 };
 
 const FullMenu = () => {
-  const navSize = 70;
+  const navSize = 60;
 
   const [isopen, setIsopen] = useState(false);
   const [showMenu, setShowmenu] = useState(false);

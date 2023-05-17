@@ -1,0 +1,27 @@
+{
+    "step1":{
+        "title":"Step 1: Request",
+        "text":"If you deem my services fit for your project you can make a request by contacting me through E-mail or through Fiverr",
+        "side":"left"
+    },
+    "step2":{
+        "title":"Step 2: Consulation",
+        "text":"We will have a meeting about the projects and talk about details and goals for the project. I will then create an offer based of your needs for the project",
+        "side":"right"
+    },
+    "step3":{
+        "title":"Step 3: Production",
+        "text":"Website development will start. Communication is key during this point and throughout the whole process I will be giving regular updates",
+        "side":"left"
+    
+    
+    },
+    "step4":{
+        "title":"Step 4: Deployment",
+        "text":"Hurray, the website is finished and at this point is presented to you to make sure that it meets your standards. Along with that comes final checks will be done to garauntee everything is peachy keen",
+        "side":"right"
+    }
+
+
+
+}
