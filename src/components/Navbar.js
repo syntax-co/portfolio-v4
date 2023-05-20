@@ -71,7 +71,7 @@ const NavMenu = () => {
           right:'-20vw',
           top:'-40vh',
           translateX:open? `-${windowdim[0]}px`:hovering? '-50px':0,
-          translateY:open? `${windowdim[1]-100}px`:0,
+          translateY:open? `${windowdim[1]-200}px`:0,
           transition:{
             duration:.25
           }
