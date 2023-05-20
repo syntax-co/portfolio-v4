@@ -1,147 +1,92 @@
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Squash as Hamburger } from "hamburger-react";
+import { Squash as Hamburger, Rotate } from "hamburger-react";
 import {Link} from 'react-router-dom';
 
 
-const MenuToggle = ({ setOpen, open, toggleMenu, navSize }) => {
-  const [hovering, setHovering] = useState(false);
+const NavButton = ({open,setOpen}) => {
 
-  return (
-    <motion.div id='toggle-body'
-      style={{
-        width: navSize,
-        height: navSize,
-      }}
-      onMouseEnter={() => {
-        setHovering(true);
-      }}
-      onMouseLeave={() => {
-        setHovering(false);
-      }}
-      onClick={() => {
-        setOpen(!open);
-        toggleMenu();
-      }}
-    >
-      <motion.div id='toggle-rollover'
-        initial={{ left: "-100%" }}
-        animate={{ left: hovering ? 0 : "-100%" }}
-      ></motion.div>
-      <Hamburger toggled={open} toggle={setOpen} color="white" />
-    </motion.div>
-  );
-};
 
-const Navitem = ({ label,path }) => {
-  const [hovering, setHovering] = useState(false);
-
-  const itemVariant = {
-    showing: {
-      opacity: 1
-    },
-    hidden: {
-      opacity: 0
-    }
-  };
-
-  return (
-    <Link to={path? path:'#'} >
-    <motion.div id='navitem-body'
-      variants={itemVariant}
-      onMouseEnter={() => setHovering(true)}
-      onMouseLeave={() => setHovering(false)}
-    >
-      <motion.div id='navitem-rollover'
-        animate={{ left: hovering ? 0 : "-100%" }}
-      ></motion.div>
-
-      <Box id='navitem-label'>
-        {label}
-      </Box>
-    </motion.div>
-    </Link>
-  );
-};
+  return(
+    <Box sx={{
+      position:'absolute',
+      zIndex:1,
+      right:'20px',
+      top:'20px'
+    }}>
+      <Hamburger toggled={open} toggle={setOpen} />
+    </Box>
+  )
+}
 
 const Menu = () => {
-  const menuVariant = {
-    showing: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    },
-    hidden: {
-      opacity: 1
-    }
-  };
-  return (
-    <motion.div
-      style={{
-        position: "absolute",
-        top: "20%",
-        left: "-170px"
-      }}
-      variants={menuVariant}
-      initial="hidden"
-      animate="showing"
+
+
+  return(
+    <Box>
+      
+    </Box>
+  )
+}
+
+const NavMenu = () => {
+  const [hovering,setHovering] = useState(false);
+  const [open,setOpen] = useState(false);
+  const [backgroundsize,setBackgroundsize] = useState(0);
+  const [windowdim,setWindowdim] = useState([0,0]);
+  const [backangle,setBackangle] = useState(0);
+
+  useEffect(() => {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+
+    const angle = Math.atan(windowWidth/windowHeight)*(180/Math.PI)
+    
+    const hypot = Math.round(Math.sqrt((windowWidth**2)+(windowHeight**2)))+500
+    setBackgroundsize(hypot);
+    setWindowdim([windowWidth,windowHeight]);
+    setBackangle(angle);
+
+  },[])
+
+
+  return(
+    <motion.div id='menu-body'
+    onMouseEnter={() => setHovering(true)}
+    onMouseLeave={() => setHovering(false)}
     >
-      <Navitem label="Home" path='/' />
-      <Navitem label="About" path='/about' />
-      <Navitem label="Contact" path='/contact' />
-    </motion.div>
-  );
-};
-
-const FullMenu = () => {
-  const navSize = 60;
-
-  const [isopen, setIsopen] = useState(false);
-  const [showMenu, setShowmenu] = useState(false);
-
-  const toggleMenu = () => {
-    if (!showMenu) {
-      setTimeout(() => {
-        setShowmenu(true);
-      }, 500);
-    } else {
-      setShowmenu(false);
-    }
-  };
-
-  return (
-    <motion.div
-      style={{
-        backgroundColor: "#f87e7e",
-        position: "relative",
-        width: navSize,
-        height: navSize,
-        borderRadius: navSize / 2
-      }}
-    >
-      <Box
-        sx={{
-          width: "100%",
-          height: "100%",
-          overflow: "hidden",
-          position: "relative",
-          borderRadius: navSize / 2
+      <NavButton open={open} setOpen={setOpen} />
+      
+      <motion.div id='menu-background' 
+        style={{
+          cursor:'pointer',
+          rotate:`${backangle}deg`,
+          height:backgroundsize, 
+          width:backgroundsize,
+          // translate:'900px -1470px'
+          translate:`${backgroundsize-400}px -${windowdim[1]}px`
         }}
-      >
-        <MenuToggle
-          setOpen={setIsopen}
-          open={isopen}
-          toggleMenu={toggleMenu}
-          navSize={navSize}
-        />
-      </Box>
+        animate={{
+          right:'-20vw',
+          top:'-40vh',
+          translateX:open? `-${windowdim[0]}px`:hovering? '-50px':0,
+          translateY:open? `${windowdim[1]-100}px`:0,
+          transition:{
+            duration:.25
+          }
+        }}
+        
+        
+      ></motion.div>
 
-      {showMenu && <Menu showMenu={showMenu} />}
+
+
+
+
     </motion.div>
-  );
-};
+  )
+}
 
 const Navbar = () => {
   return (
@@ -153,14 +98,10 @@ const Navbar = () => {
         Chris Munoz
       </Box>
 
-      <Box id='navbutton-holder' >
-        <FullMenu />
-        {/* <div style={{
-          width:'15%',
-          height:'100%',
-          backgroundColor:'orange'
-        }} ></div> */}
-      </Box>
+      
+        <NavMenu />
+        
+      
     </Box>
   );
 };

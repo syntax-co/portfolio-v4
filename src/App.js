@@ -143,8 +143,8 @@ export default function App() {
   return (
     <Box id='homepage-container'>
       
-      <ProjectSection />
-      <ShowcaseSection />
+      {/* <ProjectSection />
+      <ShowcaseSection /> */}
 
 
     </Box>

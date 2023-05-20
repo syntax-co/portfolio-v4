@@ -1,6 +1,7 @@
 import { Box } from "@mui/material"
 import { useEffect, useState } from "react"
 import step_data from './json_files/steps_data.json';
+import {motion} from 'framer-motion';
 
 
 const StepTile = ({title,text,side}) => {
@@ -75,16 +76,73 @@ const Steps = () => {
 }
 
 
-const Bordered = () => {
+const ContactLinks = () => {
+
+    
+
+    useEffect(() => {
+        const mainBody = document.querySelector('#border-box');
+        
 
 
- return(
-    <Box id='border-box'>
-        <Box id='border-box-inner'>
 
+
+    },[])
+
+
+    const ContactDiamond = ({hovering}) => {
+
+        return(
+            <motion.div id='contact-diamond' 
+            
+            animate={{
+                scale:hovering? 1.05:1,
+                backgroundColor:hovering? '#ffffff77':'#202020',
+                transition:{
+                    duration:.5
+                }
+            }}
+            >
+                <Box id='contact-diamond-inner' >
+                    
+                </Box>
+            </motion.div>
+        )
+    }
+
+    
+
+    const ContactLink = ({icon}) => {
+
+        const [hovering,setHovering] = useState(false);
+
+        return(
+            <Box id='link-body'
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}
+            >
+                
+                <ContactDiamond hovering={hovering} />
+
+                <Box sx={{
+                    width:'80%',
+                    height:'70px',
+                }}>
+
+                </Box>
+
+            </Box>
+        )
+    }
+
+
+    return(
+        <Box id='border-box'>
+            <ContactLink />
+            <ContactLink />
+            <ContactLink />
         </Box>
-    </Box>
- )   
+    )   
 }
 
 
@@ -109,7 +167,7 @@ const Contact = () => {
                     display:'flex'
                 }}>
 
-                    <Bordered />
+                    <ContactLinks />
                     <Steps />
                 </Box>
                 
